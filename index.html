@@ -173,8 +173,9 @@
         <div class="max-w-7xl mx-auto">
             <h2 data-i18n="contact-title" class="text-3xl md:text-4xl font-bold text-center mb-8">Join Our Journey</h2>
             <p data-i18n="contact-text" class="text-center text-gray-600 text-sm sm:text-base mb-8">Interested in investing in the future of clean energy? Get in touch with us.</p>
-            <form name="investor-contact" method="POST" action="/thank-you.html" data-netlify="true" class="max-w-lg mx-auto space-y-4">
-                <input type="hidden" name="form-name" value="investor-contact" netlify />
+            <form name="investor-contact" method="POST" action="/thank-you.html?lang={{lang}}" data-netlify="true" onsubmit="setLanguageParam(event)" class="max-w-lg mx-auto space-y-4">
+                <input type="hidden" name="form-name" value="investor-contact" />
+                <input type="hidden" name="lang" id="form-lang" value="en">
                 <input type="text" name="name" data-i18n-placeholder="contact-name-placeholder" placeholder="Full Name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-sm sm:text-base">
                 <input type="email" name="email" data-i18n-placeholder="contact-email-placeholder" placeholder="Email Address" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-sm sm:text-base">
                 <textarea name="message" data-i18n-placeholder="contact-message-placeholder" placeholder="Your Message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-sm sm:text-base"></textarea>
@@ -275,6 +276,7 @@
                 }
             });
             document.documentElement.lang = lang;
+            document.getElementById('form-lang').value = lang; // Sync lang with form
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -285,8 +287,8 @@
             // Initialize with English
             updateLanguage('en');
 
-            // Smooth and fast scrolling function
-            function scrollToSection(event) {
+            // Smooth scrolling function
+            window.scrollToSection = function(event) {
                 event.preventDefault();
                 const target = document.querySelector(event.target.getAttribute('href'));
                 if (target) {
@@ -299,7 +301,14 @@
                         }
                     });
                 }
-            }
+            };
+
+            // Set language parameter before form submission
+            window.setLanguageParam = function(event) {
+                const lang = document.getElementById('language-switch').value;
+                const form = event.target;
+                form.action = `/thank-you.html?lang=${lang}`; // Dynamically set the redirect URL
+            };
         });
     </script>
 </body>
