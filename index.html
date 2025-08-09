@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecula - Clean Tech Startup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-padding {
+            padding: 4rem 1rem;
+        }
+        .bg-gradient-hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #10b981 100%);
+        }
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            width: 4px;
+            background: #10b981;
+        }
+        @media (max-width: 640px) {
+            .section-padding {
+                padding: 2rem 1rem;
+            }
+            .timeline-line {
+                left: 1.5rem;
+                transform: none;
+            }
+            .timeline-item {
+                flex-direction: column !important;
+                text-align: left !important;
+                padding-left: 3rem;
+                padding-right: 1rem;
+            }
+            .timeline-item > div {
+                width: 100% !important;
+            }
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: 1rem;
+                top: 0;
+                width: 12px;
+                height: 12px;
+                background: #10b981;
+                border-radius: 50%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <!-- Header with Language Switch -->
+    <header class="bg-blue-900 text-white py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
+            <h1 class="text-xl font-bold">Molecula</h1>
+            <div class="relative">
+                <select id="language-switch" class="bg-green-600 text-white p-2 rounded-lg focus:outline-none hover:bg-green-700 transition text-sm">
+                    <option value="en">English</option>
+                    <option value="hu">Magyar</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-hero text-white section-padding">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 data-i18n="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">Fueling the Future with Clean Molecules</h1>
+            <p data-i18n="hero-text" class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+                Molecula is revolutionizing energy with synthetic, carbon-neutral gasoline made from CO₂ captured from the air and renewable hydrogen.
+            </p>
+            <a href="#contact" data-i18n="hero-cta" class="mt-6 inline-block bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-green-100 transition" onclick="scrollToSection(event)">Join Our Mission</a>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="bg-white section-padding">
+        <div class="max-w-7xl mx-auto">
+            <h2 data-i18n="tech-title" class="text-3xl md:text-4xl font-bold text-center mb-8">Our Technology</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+                <div>
+                    <h3 data-i18n="tech-dac-title" class="text-xl sm:text-2xl font-semibold text-green-600 mb-4">Direct Air Capture (DAC)</h3>
+                    <p data-i18n="tech-dac-text" class="text-gray-600 text-sm sm:text-base">
+                        We use advanced Direct Air Capture technology to extract CO₂ directly from the atmosphere. This carbon is the building block for our synthetic fuel, ensuring a closed-loop, carbon-neutral process.
+                    </p>
+                </div>
+                <div>
+                    <h3 data-i18n="tech-ft-title" class="text-xl sm:text-2xl font-semibold text-green-600 mb-4">Fischer-Tropsch + Hydrocracking</h3>
+                    <p data-i18n="tech-ft-text" class="text-gray-600 text-sm sm:text-base">
+                        Our process combines CO₂ with renewable hydrogen using the Fischer-Tropsch synthesis, followed by hydrocracking to produce high-quality, carbon-neutral gasoline compatible with existing infrastructure.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Impact Section -->
+    <section id="vision" class="bg-green-50 section-padding">
+        <div class="max-w-7xl mx-auto">
+            <h2 data-i18n="vision-title" class="text-3xl md:text-4xl font-bold text-center mb-8">Vision & Impact</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <h3 data-i18n="vision-env-title" class="text-lg sm:text-xl font-semibold text-blue-800 mb-2">Environmental Benefits</h3>
+                    <p data-i18n="vision-env-text" class="text-gray-600 text-sm sm:text-base">
+                        Our fuel reduces lifecycle CO₂ emissions by up to 90% compared to fossil gasoline, helping combat climate change without requiring new infrastructure.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h3 data-i18n="vision-eco-title" class="text-lg sm:text-xl font-semibold text-blue-800 mb-2">Economic Opportunities</h3>
+                    <p data-i18n="vision-eco-text" class="text-gray-600 text-sm sm:text-base">
+                        By leveraging existing fuel distribution systems, we create jobs and drive economic growth in the clean energy sector.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <h3 data-i18n="vision-scale-title" class="text-lg sm:text-xl font-semibold text-blue-800 mb-2">Scalable Solution</h3>
+                    <p data-i18n="vision-scale-text" class="text-gray-600 text-sm sm:text-base">
+                        Our technology is designed to scale globally, providing a sustainable alternative to fossil fuels for transportation and industry.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="bg-white section-padding">
+        <div class="max-w-7xl mx-auto">
+            <h2 data-i18n="roadmap-title" class="text-3xl md:text-4xl font-bold text-center mb-8">Our Roadmap</h2>
+            <div class="relative">
+                <div class="timeline-line hidden sm:block"></div>
+                <div class="space-y-8">
+                    <div class="timeline-item flex flex-col sm:flex-row items-start sm:items-center">
+                        <div class="sm:w-1/2 text-left sm:text-right pr-0 sm:pr-4 relative">
+                            <h3 data-i18n="roadmap-2025-title" class="text-lg sm:text-xl font-semibold text-green-600 mb-2">2025: Prototype</h3>
+                            <p data-i18n="roadmap-2025-text" class="text-gray-600 text-sm sm:text-base">Develop and test a working prototype of our synthetic fuel production system in a controlled environment.</p>
+                        </div>
+                        <div class="sm:w-1/2 hidden sm:block"></div>
+                    </div>
+                    <div class="timeline-item flex flex-col sm:flex-row-reverse items-start sm:items-center">
+                        <div class="sm:w-1/2 text-left pl-0 sm:pl-4 relative">
+                            <h3 data-i18n="roadmap-2026-title" class="text-lg sm:text-xl font-semibold text-green-600 mb-2">2026: Pilot Plant</h3>
+                            <p data-i18n="roadmap-2026-text" class="text-gray-600 text-sm sm:text-base">Build and operate a pilot plant to demonstrate scalability and refine production processes.</p>
+                        </div>
+                        <div class="sm:w-1/2 hidden sm:block"></div>
+                    </div>
+                    <div class="timeline-item flex flex-col sm:flex-row items-start sm:items-center">
+                        <div class="sm:w-1/2 text-left sm:text-right pr-0 sm:pr-4 relative">
+                            <h3 data-i18n="roadmap-2027-title" class="text-lg sm:text-xl font-semibold text-green-600 mb-2">2027: Scale-Up</h3>
+                            <p data-i18n="roadmap-2027-text" class="text-gray-600 text-sm sm:text-base">Expand to commercial-scale production, partnering with energy providers to distribute carbon-neutral gasoline.</p>
+                        </div>
+                        <div class="sm:w-1/2 hidden sm:block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="bg-green-50 section-padding">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 data-i18n="team-title" class="text-3xl md:text-4xl font-bold mb-8">Our Team</h2>
+            <p data-i18n="team-text" class="text-gray-600 text-sm sm:text-base">Our team of innovators, engineers, and scientists is coming soon. Stay tuned for updates!</p>
+        </div>
+    </section>
+
+    <!-- Investor Contact Form with Netlify -->
+    <section id="contact" class="bg-white section-padding">
+        <div class="max-w-7xl mx-auto">
+            <h2 data-i18n="contact-title" class="text-3xl md:text-4xl font-bold text-center mb-8">Join Our Journey</h2>
+            <p data-i18n="contact-text" class="text-center text-gray-600 text-sm sm:text-base mb-8">Interested in investing in the future of clean energy? Get in touch with us.</p>
+            <form name="investor-contact" method="POST" action="/thank-you.html" data-netlify="true" class="max-w-lg mx-auto space-y-4">
+                <input type="hidden" name="form-name" value="investor-contact" />
+                <input type="text" name="name" data-i18n-placeholder="contact-name-placeholder" placeholder="Full Name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-sm sm:text-base">
+                <input type="email" name="email" data-i18n-placeholder="contact-email-placeholder" placeholder="Email Address" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-sm sm:text-base">
+                <textarea name="message" data-i18n-placeholder="contact-message-placeholder" placeholder="Your Message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-sm sm:text-base"></textarea>
+                <button type="submit" data-i18n="contact-submit" class="w-full bg-green-600 text-white p-3 rounded-lg font-semibold hover:bg-green-700 transition text-sm sm:text-base">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <p data-i18n="footer-text" class="text-sm sm:text-base">&copy; 2025 Molecula. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Language Switching, Scrolling, and Form Handling -->
+    <script>
+        const translations = {
+            en: {
+                'hero-title': 'Fueling the Future with Clean Molecules',
+                'hero-text': 'Molecula is revolutionizing energy with synthetic, carbon-neutral gasoline made from CO₂ captured from the air and renewable hydrogen.',
+                'hero-cta': 'Join Our Mission',
+                'tech-title': 'Our Technology',
+                'tech-dac-title': 'Direct Air Capture (DAC)',
+                'tech-dac-text': 'We use advanced Direct Air Capture technology to extract CO₂ directly from the atmosphere. This carbon is the building block for our synthetic fuel, ensuring a closed-loop, carbon-neutral process.',
+                'tech-ft-title': 'Fischer-Tropsch + Hydrocracking',
+                'tech-ft-text': 'Our process combines CO₂ with renewable hydrogen using the Fischer-Tropsch synthesis, followed by hydrocracking to produce high-quality, carbon-neutral gasoline compatible with existing infrastructure.',
+                'vision-title': 'Vision & Impact',
+                'vision-env-title': 'Environmental Benefits',
+                'vision-env-text': 'Our fuel reduces lifecycle CO₂ emissions by up to 90% compared to fossil gasoline, helping combat climate change without requiring new infrastructure.',
+                'vision-eco-title': 'Economic Opportunities',
+                'vision-eco-text': 'By leveraging existing fuel distribution systems, we create jobs and drive economic growth in the clean energy sector.',
+                'vision-scale-title': 'Scalable Solution',
+                'vision-scale-text': 'Our technology is designed to scale globally, providing a sustainable alternative to fossil fuels for transportation and industry.',
+                'roadmap-title': 'Our Roadmap',
+                'roadmap-2025-title': '2025: Prototype',
+                'roadmap-2025-text': 'Develop and test a working prototype of our synthetic fuel production system in a controlled environment.',
+                'roadmap-2026-title': '2026: Pilot Plant',
+                'roadmap-2026-text': 'Build and operate a pilot plant to demonstrate scalability and refine production processes.',
+                'roadmap-2027-title': '2027: Scale-Up',
+                'roadmap-2027-text': 'Expand to commercial-scale production, partnering with energy providers to distribute carbon-neutral gasoline.',
+                'team-title': 'Our Team',
+                'team-text': 'Our team of innovators, engineers, and scientists is coming soon. Stay tuned for updates!',
+                'contact-title': 'Join Our Journey',
+                'contact-text': 'Interested in investing in the future of clean energy? Get in touch with us.',
+                'contact-name-placeholder': 'Full Name',
+                'contact-email-placeholder': 'Email Address',
+                'contact-message-placeholder': 'Your Message',
+                'contact-submit': 'Submit',
+                'footer-text': '© 2025 Molecula. All rights reserved.'
+            },
+            hu: {
+                'hero-title': 'A Jövő Üzemanyaga Tiszta Molekulákkal',
+                'hero-text': 'A Molecula forradalmasítja az energiatermelést szintetikus, szénsemleges benzinnel, amelyet a levegőből kivont CO₂-ből és megújuló hidrogénből állítunk elő.',
+                'hero-cta': 'Csatlakozz Küldetésünkhöz',
+                'tech-title': 'Technológiánk',
+                'tech-dac-title': 'Közvetlen Levegő CO₂ Eltávolítás (DAC)',
+                'tech-dac-text': 'Fejlett közvetlen levegő CO₂ eltávolító technológiát használunk a légkörből származó CO₂ kinyerésére. Ez a szén a szintetikus üzemanyagunk alapja, biztosítva a zárt körű, szénsemleges folyamatot.',
+                'tech-ft-title': 'Fischer-Tropsch + Hidrokrakkolás',
+                'tech-ft-text': 'Folyamatunk során a CO₂-t megújuló hidrogénnel kombináljuk a Fischer-Tropsch szintézis segítségével, majd hidrokrakkolással kiváló minőségű, szénsemleges benzint állítunk elő, amely kompatibilis a meglévő infrastruktúrával.',
+                'vision-title': 'Vízió és Hatás',
+                'vision-env-title': 'Környezeti Előnyök',
+                'vision-env-text': 'Üzemanyagunk akár 90%-kal csökkenti az életciklus CO₂-kibocsátást a fosszilis benzinhez képest, hozzájárulva az éghajlatváltozás elleni küzdelemhez új infrastruktúra nélkül.',
+                'vision-eco-title': 'Gazdasági Lehetőségek',
+                'vision-eco-text': 'A meglévő üzemanyag-elosztó rendszerek kihasználásával munkahelyeket teremtünk és elősegítjük a tiszta energia szektor gazdasági növekedését.',
+                'vision-scale-title': 'Méretezhető Megoldás',
+                'vision-scale-text': 'Technológiánk globális méretezésre készült, fenntartható alternatívát kínálva a fosszilis üzemanyagok helyett a közlekedés és ipar számára.',
+                'roadmap-title': 'Ütemtervünk',
+                'roadmap-2025-title': '2025: Prototípus',
+                'roadmap-2025-text': 'Szintetikus üzemanyag-előállító rendszerünk prototípusának fejlesztése és tesztelése ellenőrzött környezetben.',
+                'roadmap-2026-title': '2026: Kísérleti Üzem',
+                'roadmap-2026-text': 'Kísérleti üzem építése és üzemeltetése a méretezhetőség bemutatására és a gyártási folyamatok finomítására.',
+                'roadmap-2027-title': '2027: Bővítés',
+                'roadmap-2027-text': 'Kereskedelmi méretű termelésre való bővítés, energiaellátókkal való partnerség a szénsemleges benzin forgalmazására.',
+                'team-title': 'Csapatunk',
+                'team-text': 'Innovátorokból, mérnökökből és tudósokból álló csapatunk hamarosan bemutatkozik. Kövesd figyelemmel a frissítéseket!',
+                'contact-title': 'Csatlakozz Utunkhoz',
+                'contact-text': 'Érdekel a tiszta energia jövőjébe való befektetés? Lépj kapcsolatba velünk.',
+                'contact-name-placeholder': 'Teljes Név',
+                'contact-email-placeholder': 'E-mail Cím',
+                'contact-message-placeholder': 'Üzeneted',
+                'contact-submit': 'Küldés',
+                'footer-text': '© 2025 Molecula. Minden jog fenntartva.'
+            }
+        };
+
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('language-switch').addEventListener('change', (e) => {
+                updateLanguage(e.target.value);
+            });
+
+            // Initialize with English
+            updateLanguage('en');
+
+            // Smooth and fast scrolling function
+            function scrollToSection(event) {
+                event.preventDefault();
+                const target = document.querySelector(event.target.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const start = performance.now();
+                    requestAnimationFrame(function step(timestamp) {
+                        const progress = timestamp - start;
+                        if (progress < 150) {
+                            requestAnimationFrame(step);
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
