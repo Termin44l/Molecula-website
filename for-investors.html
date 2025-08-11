@@ -115,7 +115,7 @@
     </style>
 </head>
 <body>
-    <!-- Header with Language Switch and Links -->
+    <!-- Header with Language Switch -->
     <header class="header">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
             <h1 class="text-xl font-bold">Molecula</h1>
@@ -256,6 +256,29 @@
             }
         };
 
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key]; // Use innerHTML for HTML tags
+                }
+            });
+            document.documentElement.lang = lang;
+            // Persist language in localStorage
+            localStorage.setItem('selectedLanguage', lang);
+            // Update select value
+            document.getElementById('language-switch').value = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            updateLanguage(savedLanguage);
+
+            document.getElementById('language-switch').addEventListener('change', (e) => {
+                updateLanguage(e.target.value);
+            });
+        });
+
         function toggleAccordion(id) {
             const content = document.getElementById(`${id}-content`);
             if (content.style.display === 'block') {
@@ -265,25 +288,6 @@
                 content.style.display = 'block';
             }
         }
-
-        function updateLanguage(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    element.innerHTML = translations[lang][key]; // Use innerHTML to handle HTML tags in translations
-                }
-            });
-            document.documentElement.lang = lang;
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('language-switch').addEventListener('change', (e) => {
-                updateLanguage(e.target.value);
-            });
-
-            // Initialize with English
-            updateLanguage('en');
-        });
     </script>
 </body>
 </html>
