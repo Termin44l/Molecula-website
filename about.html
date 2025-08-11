@@ -123,7 +123,7 @@
     </style>
 </head>
 <body>
-    <!-- Header with Language Switch and Links -->
+    <!-- Header with Language Switch -->
     <header class="header">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
             <h1 class="text-xl font-bold">Molecula</h1>
@@ -229,7 +229,7 @@
                 'nav-home': 'Főoldal',
                 'nav-about': 'Rólunk',
                 'nav-investors': 'Befektetőknek',
-                'about-mission-title': 'Missziónk',
+                'about-mission-title': 'Küldetésünk',
                 'about-mission-text': 'A Molecula létezése arra irányul, hogy valóban szénsemleges szintetikus üzemanyagokat hozzon létre, amelyek korszerű járműveket képesek meghajtani kompromisszumok nélkül. Célunk egyszerű: fosszilis benzin és dízel felváltása tiszta, fenntartható alternatívákkal – anélkül, hogy a sofőröket vagy az ipart motorcserére kényszerítenénk.',
                 'about-story-title': 'Történetünk',
                 'about-story-text': 'A közlekedési szektor a globális CO₂-kibocsátás közel negyedéért felelős. Bár az elektromos járművek terjednek, milliárdnyi meglévő autó, teherautó és hajó még fosszilis üzemanyagokon fut – és ez így lesz évtizedeken át. A Moleculát azzal a hittel indítottuk, hogy egy másféle üzemanyag áthidalhatja ezt a szakadékot: egy olyan üzemanyag, amelyet levegőből, vízből és megújuló energiából készítünk, de azonos teljesítményt nyújt, mint a mai benzin. Ez a vízió úttörő kémiát ötvöz a gyakorlati alkalmazhatósággal: tiszta üzemanyagok, amelyek közvetlenül beilleszthetők a meglévő infrastruktúrába.',
@@ -246,7 +246,7 @@
                 'about-vision-2027': '2027 – Piacra lépés az első kereskedelmi üzemmel.',
                 'about-vision-2030': '2030 – Többüzemű termelési hálózat Európa-szerte.',
                 'about-team-title': 'Csapatunk',
-                'about-team-founder-name': 'Alapító & Ügyvezető Igazgató: Erdei Zoltán',
+                'about-team-founder-name': 'Alapító & Ügyvezető Igazgató: Zoltán Erdei',
                 'about-team-founder-desc': 'Zoltán a klímainnováció iránti szenvedélye és a gyakorlati megoldások iránti elkötelezettsége hajtja, miközben a Molecula tervezését és üzleti fejlesztését vezeti.',
                 'about-team-expanding': 'Jelenleg építjük mérnöki és kémiai csapatunkat, hogy életre keltsük víziónkat.',
                 'footer-text': '© 2025 Molecula. Minden jog fenntartva.'
@@ -261,17 +261,20 @@
                 }
             });
             document.documentElement.lang = lang;
+            // Persist language in localStorage
+            localStorage.setItem('selectedLanguage', lang);
+            // Update select value
+            document.getElementById('language-switch').value = lang;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            updateLanguage(savedLanguage);
+
             document.getElementById('language-switch').addEventListener('change', (e) => {
                 updateLanguage(e.target.value);
             });
-
-            // Initialize with English
-            updateLanguage('en');
         });
     </script>
 </body>
-
 </html>
