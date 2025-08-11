@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecula - For Investors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 1rem;
+        }
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            flex: 1;
+        }
+        .opportunity-panel {
+            background: linear-gradient(135deg, #1e3a8a 0%, #10b981 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            height: fit-content;
+        }
+        .accordion {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .accordion-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        .accordion-header {
+            padding: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #10b981;
+            cursor: pointer;
+            background-color: #f9fafb;
+        }
+        .accordion-header:hover {
+            background-color: #e5e7eb;
+        }
+        .accordion-content {
+            padding: 1rem;
+            display: none;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        .accordion-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        .accordion-content li {
+            margin-bottom: 0.5rem;
+        }
+        .cta-panel {
+            background-color: #d1fae5;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+        .cta-panel h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+        .footer {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            .opportunity-panel, .cta-panel {
+                padding: 1.5rem;
+            }
+            .accordion-header {
+                font-size: 1.125rem;
+            }
+            .cta-panel {
+                position: static;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Language Switch and Links -->
+    <header class="header">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
+            <h1 class="text-xl font-bold">Molecula</h1>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" data-i18n="nav-home" class="hover:text-green-300 transition">Home</a>
+                <a href="about.html" data-i18n="nav-about" class="hover:text-green-300 transition">About</a>
+                <a href="for-investors.html" data-i18n="nav-investors" class="hover:text-green-300 transition">For Investors</a>
+                <div class="relative">
+                    <select id="language-switch" class="bg-green-600 text-white p-2 rounded-lg focus:outline-none hover:bg-green-700 transition text-sm">
+                        <option value="en">English</option>
+                        <option value="hu">Magyar</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div>
+            <div class="opportunity-panel">
+                <h1 data-i18n="investors-opportunity-title">The Opportunity</h1>
+                <p data-i18n="investors-opportunity-text">The global synthetic fuel market is projected to exceed €100 billion by 2030. Governments worldwide are enforcing stricter CO₂ regulations, while internal combustion vehicles remain dominant in transportation. Molecula offers a high-yield, carbon-neutral fuel production process designed for compatibility with today’s engines — opening a massive, immediate market.</p>
+            </div>
+
+            <div class="accordion mt-4">
+                <div class="accordion-item">
+                    <div data-i18n="investors-why-win-title" class="accordion-header" onclick="toggleAccordion('why-win')">Why Molecula Will Win</div>
+                    <div id="why-win-content" class="accordion-content">
+                        <ul>
+                            <li data-i18n="investors-why-win-yield">Higher gasoline yield through Fischer–Tropsch + hydrocracking integration.</li>
+                            <li data-i18n="investors-why-win-neutrality">True carbon neutrality via Direct Air Capture.</li>
+                            <li data-i18n="investors-why-win-scalability">Scalable, modular plants for faster deployment and lower capital costs.</li>
+                            <li data-i18n="investors-why-win-dual">Dual product lines: gasoline for light transport, diesel for heavy industry.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div data-i18n="investors-milestones-title" class="accordion-header" onclick="toggleAccordion('milestones')">Milestones & Roadmap</div>
+                    <div id="milestones-content" class="accordion-content">
+                        <ul>
+                            <li data-i18n="investors-milestones-now">Now – Company formation, investor outreach, partner lab negotiations.</li>
+                            <li data-i18n="investors-milestones-2025">2025 – Lab-scale proof of concept.</li>
+                            <li data-i18n="investors-milestones-2026">2026 – Pilot plant with certification trials.</li>
+                            <li data-i18n="investors-milestones-2027">2027 – First commercial facility launch.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div data-i18n="investors-funding-title" class="accordion-header" onclick="toggleAccordion('funding')">Funding Requirements</div>
+                    <div id="funding-content" class="accordion-content">
+                        <ul>
+                            <li data-i18n="investors-funding-phase1">Phase 1 – €500k: Lab development, catalyst optimization, and pilot design.</li>
+                            <li data-i18n="investors-funding-phase2">Phase 2 – €5M: Pilot plant construction, testing, and certification.</li>
+                            <li data-i18n="investors-funding-phase3">Phase 3 – €25M: Commercial plant rollout.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-panel">
+            <h2 data-i18n="investors-cta-title">Call to Action</h2>
+            <p data-i18n="investors-cta-text">We are currently in discussions with early-stage climate-tech investors and seeking strategic partners for our pilot plant program.</p>
+            <p data-i18n="investors-cta-request">📩 Request our full pitch deck & technical whitepaper via the <a href="index.html#contact" class="text-blue-600 hover:underline">contact form</a>.</p>
+            <p data-i18n="investors-cta-opportunity">Molecula is your entry point into a massive, fast-growing market that will define the next era of energy.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="max-w-7xl mx-auto">
+            <p data-i18n="footer-text">&copy; 2025 Molecula. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Accordion and Language Switching -->
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(`${id}-content`);
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                document.querySelectorAll('.accordion-content').forEach(item => item.style.display = 'none');
+                content.style.display = 'block';
+            }
+        }
+
+        const translations = {
+            en: {
+                'nav-home': 'Home',
+                'nav-about': 'About',
+                'nav-investors': 'For Investors',
+                'investors-opportunity-title': 'The Opportunity',
+                'investors-opportunity-text': 'The global synthetic fuel market is projected to exceed €100 billion by 2030. Governments worldwide are enforcing stricter CO₂ regulations, while internal combustion vehicles remain dominant in transportation. Molecula offers a high-yield, carbon-neutral fuel production process designed for compatibility with today’s engines — opening a massive, immediate market.',
+                'investors-why-win-yield': 'Higher gasoline yield through Fischer–Tropsch + hydrocracking integration.',
+                'investors-why-win-neutrality': 'True carbon neutrality via Direct Air Capture.',
+                'investors-why-win-scalability': 'Scalable, modular plants for faster deployment and lower capital costs.',
+                'investors-why-win-dual': 'Dual product lines: gasoline for light transport, diesel for heavy industry.',
+                'investors-milestones-now': 'Now – Company formation, investor outreach, partner lab negotiations.',
+                'investors-milestones-2025': '2025 – Lab-scale proof of concept.',
+                'investors-milestones-2026': '2026 – Pilot plant with certification trials.',
+                'investors-milestones-2027': '2027 – First commercial facility launch.',
+                'investors-funding-phase1': 'Phase 1 – €500k: Lab development, catalyst optimization, and pilot design.',
+                'investors-funding-phase2': 'Phase 2 – €5M: Pilot plant construction, testing, and certification.',
+                'investors-funding-phase3': 'Phase 3 – €25M: Commercial plant rollout.',
+                'investors-cta-title': 'Call to Action',
+                'investors-cta-text': 'We are currently in discussions with early-stage climate-tech investors and seeking strategic partners for our pilot plant program.',
+                'investors-cta-request': '📩 Request our full pitch deck & technical whitepaper via the <a href="index.html#contact" class="text-blue-600 hover:underline">contact form</a>.',
+                'investors-cta-opportunity': 'Molecula is your entry point into a massive, fast-growing market that will define the next era of energy.',
+                'footer-text': '© 2025 Molecula. All rights reserved.'
+            },
+            hu: {
+                'nav-home': 'Főoldal',
+                'nav-about': 'Rólunk',
+                'nav-investors': 'Befektetőknek',
+                'investors-opportunity-title': 'A Lehetőség',
+                'investors-opportunity-text': 'A globális szintetikus üzemanyag piac 2030-ra meghaladhatja a 100 milliárd eurót. A világ kormányai szigorúbb CO₂ szabályozásokat vezetnek be, miközben a belső égésű járművek dominálnak a közlekedésben. A Molecula egy magas hozamú, szénsemleges üzemanyag-előállítási folyamatot kínál, amely kompatibilis a mai motorokkal – megnyitva egy hatalmas, azonnali piacot.',
+                'investors-why-win-yield': 'Magasabb benzin hozam a Fischer–Tropsch + hidrokrakkolás integrációval.',
+                'investors-why-win-neutrality': 'Valódi szénsemlegesség a Közvetlen Levegő Eltávolítás révén.',
+                'investors-why-win-scalability': 'Méretezhető, moduláris üzemek gyorsabb telepítéshez és alacsonyabb tőke költségekhez.',
+                'investors-why-win-dual': 'Két termékvonal: benzin könnyű közlekedéshez, dízel nehéziparhoz.',
+                'investors-milestones-now': 'Most – Cég megalakulása, befektetői kapcsolatfelvétel, partner laboratóriumi tárgyalások.',
+                'investors-milestones-2025': '2025 – Laboratóriumi méretű koncepció igazolása.',
+                'investors-milestones-2026': '2026 – Kísérleti üzem tanúsítási próbákkal.',
+                'investors-milestones-2027': '2027 – Első kereskedelmi létesítmény indítása.',
+                'investors-funding-phase1': '1. fázis – 500 000 €: Laboratóriumi fejlesztés, katalizátor optimalizálás és pilótaterv.',
+                'investors-funding-phase2': '2. fázis – 5 M €: Kísérleti üzem építése, tesztelés és tanúsítás.',
+                'investors-funding-phase3': '3. fázis – 25 M €: Kereskedelmi üzemek bevezetése.',
+                'investors-cta-title': 'Felhívás a cselekvésre',
+                'investors-cta-text': 'Jelenleg tárgyalásokat folytatunk korai stádiumú klíma-technológiai befektetőkkel, és stratégiai partnereket keresünk kísérleti üzem programunkhoz.',
+                'investors-cta-request': '📩 Kérje teljes előadásanyagunkat és műszaki tanulmányunkat az <a href="index.html#contact" class="text-blue-600 hover:underline">kapcsolatfelvételi űrlap</a> segítségével.',
+                'investors-cta-opportunity': 'A Molecula a belépési pont egy hatalmas, gyorsan növekvő piacra, amely meghatározza az energia következő korszakát.',
+                'footer-text': '© 2025 Molecula. Minden jog fenntartva.',
+                'investors-why-win-title': 'Miért lesz sikeres a Molecula',
+                'investors-milestones-title': 'Mérföldkövek és Ütemterv',
+                'investors-funding-title': 'Tőkeszükségletek',
+            }
+        };
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(`${id}-content`);
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                document.querySelectorAll('.accordion-content').forEach(item => item.style.display = 'none');
+                content.style.display = 'block';
+            }
+        }
+
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key]; // Use innerHTML to handle HTML tags in translations
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('language-switch').addEventListener('change', (e) => {
+                updateLanguage(e.target.value);
+            });
+
+            // Initialize with English
+            updateLanguage('en');
+        });
+    </script>
+</body>
+</html>

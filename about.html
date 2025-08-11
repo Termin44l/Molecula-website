@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecula - About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 1rem;
+        }
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .mission-block {
+            background: linear-gradient(135deg, #1e3a8a 0%, #10b981 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+        .story-block, .team-block {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .tech-block {
+            background-color: #e6fffa;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+        .vision-block {
+            background-color: #d1fae5;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #10b981;
+        }
+        p {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            margin-bottom: 1rem;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .team-card {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .team-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 9999px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid #10b981;
+        }
+        .team-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+        .team-card p {
+            font-size: 1rem;
+            color: #4b5563;
+        }
+        .footer {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .content-container {
+                padding: 1rem;
+            }
+            .mission-block, .story-block, .tech-block, .vision-block, .team-block {
+                padding: 1.5rem;
+            }
+            .team-card img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Language Switch and Links -->
+    <header class="header">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
+            <h1 class="text-xl font-bold">Molecula</h1>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" data-i18n="nav-home" class="hover:text-green-300 transition">Home</a>
+                <a href="about.html" data-i18n="nav-about" class="hover:text-green-300 transition">About</a>
+                <a href="for-investors.html" data-i18n="nav-investors" class="hover:text-green-300 transition">For Investors</a>
+                <div class="relative">
+                    <select id="language-switch" class="bg-green-600 text-white p-2 rounded-lg focus:outline-none hover:bg-green-700 transition text-sm">
+                        <option value="en">English</option>
+                        <option value="hu">Magyar</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <div class="mission-block">
+            <h1 data-i18n="about-mission-title">Our Mission</h1>
+            <p data-i18n="about-mission-text">Molecula exists to create truly carbon-neutral synthetic fuels that can power modern vehicles without compromise. Our goal is simple: replace fossil gasoline and diesel with clean, sustainable alternatives — without forcing drivers or industries to change their engines.</p>
+        </div>
+
+        <div class="story-block">
+            <h2 data-i18n="about-story-title">Our Story</h2>
+            <p data-i18n="about-story-text">The transport sector accounts for nearly a quarter of global CO₂ emissions. While electric vehicles are expanding, billions of existing cars, trucks, and ships still run on fossil fuels — and will for decades to come. We started Molecula with a belief that a different kind of fuel can bridge the gap: a fuel made from air, water, and renewable energy, but identical in performance to today’s gasoline. This vision combines breakthrough chemistry with real-world practicality: clean fuels that drop directly into existing infrastructure.</p>
+        </div>
+
+        <div class="tech-block">
+            <h2 data-i18n="about-tech-title">Our Technology</h2>
+            <p data-i18n="about-tech-intro">Molecula uses a hybrid approach to produce clean fuels:</p>
+            <ul>
+                <li data-i18n="about-tech-ft">Fischer–Tropsch synthesis to convert renewable hydrogen and CO₂ into synthetic hydrocarbons.</li>
+                <li data-i18n="about-tech-hydro">Hydrocracking to turn the heavier waxes from FT into high-octane gasoline.</li>
+                <li data-i18n="about-tech-dac">Direct Air Capture to source CO₂ directly from the atmosphere, ensuring net-zero emissions.</li>
+            </ul>
+            <p data-i18n="about-tech-dual">This dual-pathway system means we can produce high yields of clean gasoline and diesel while maintaining total carbon neutrality.</p>
+        </div>
+
+        <div class="vision-block">
+            <h2 data-i18n="about-vision-title">Our Vision for the Future</h2>
+            <p data-i18n="about-vision-text">We are committed to scaling our technology over the coming years:</p>
+            <ul>
+                <li data-i18n="about-vision-2025">2025 – Lab-scale prototype proving the process.</li>
+                <li data-i18n="about-vision-2026">2026 – Pilot-scale production and certification.</li>
+                <li data-i18n="about-vision-2027">2027 – Market entry with first commercial plant.</li>
+                <li data-i18n="about-vision-2030">2030 – Multi-plant production network across Europe.</li>
+            </ul>
+        </div>
+
+        <div class="team-block">
+            <h2 data-i18n="about-team-title">The Team</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="team-card">
+                    <img src="placeholder.jpg" alt="Founder & CEO Portrait" class="mx-auto">
+                    <h3 data-i18n="about-team-founder-name">Founder & CEO: [Your Name]</h3>
+                    <p data-i18n="about-team-founder-desc">Driven by a passion for climate innovation and a commitment to practical solutions, [Your Name] is leading the design and business development for Molecula.</p>
+                </div>
+                <!-- Add more team-card divs here for additional members -->
+            </div>
+            <p data-i18n="about-team-expanding">We are currently building our engineering and chemistry team to bring our vision to life.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="max-w-7xl mx-auto">
+            <p data-i18n="footer-text">&copy; 2025 Molecula. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Language Switching -->
+    <script>
+        const translations = {
+            en: {
+                'nav-home': 'Home',
+                'nav-about': 'About',
+                'nav-investors': 'For Investors',
+                'about-mission-title': 'Our Mission',
+                'about-mission-text': 'Molecula exists to create truly carbon-neutral synthetic fuels that can power modern vehicles without compromise. Our goal is simple: replace fossil gasoline and diesel with clean, sustainable alternatives — without forcing drivers or industries to change their engines.',
+                'about-story-title': 'Our Story',
+                'about-story-text': 'The transport sector accounts for nearly a quarter of global CO₂ emissions. While electric vehicles are expanding, billions of existing cars, trucks, and ships still run on fossil fuels — and will for decades to come. We started Molecula with a belief that a different kind of fuel can bridge the gap: a fuel made from air, water, and renewable energy, but identical in performance to today’s gasoline. This vision combines breakthrough chemistry with real-world practicality: clean fuels that drop directly into existing infrastructure.',
+                'about-tech-title': 'Our Technology',
+                'about-tech-intro': 'Molecula uses a hybrid approach to produce clean fuels:',
+                'about-tech-ft': 'Fischer–Tropsch synthesis to convert renewable hydrogen and CO₂ into synthetic hydrocarbons.',
+                'about-tech-hydro': 'Hydrocracking to turn the heavier waxes from FT into high-octane gasoline.',
+                'about-tech-dac': 'Direct Air Capture to source CO₂ directly from the atmosphere, ensuring net-zero emissions.',
+                'about-tech-dual': 'This dual-pathway system means we can produce high yields of clean gasoline and diesel while maintaining total carbon neutrality.',
+                'about-vision-title': 'Our Vision for the Future',
+                'about-vision-text': 'We are committed to scaling our technology over the coming years:',
+                'about-vision-2025': '2025 – Lab-scale prototype proving the process.',
+                'about-vision-2026': '2026 – Pilot-scale production and certification.',
+                'about-vision-2027': '2027 – Market entry with first commercial plant.',
+                'about-vision-2030': '2030 – Multi-plant production network across Europe.',
+                'about-team-title': 'The Team',
+                'about-team-founder-name': 'Founder & CEO: [Your Name]',
+                'about-team-founder-desc': 'Driven by a passion for climate innovation and a commitment to practical solutions, [Your Name] is leading the design and business development for Molecula.',
+                'about-team-expanding': 'We are currently building our engineering and chemistry team to bring our vision to life.',
+                'footer-text': '© 2025 Molecula. All rights reserved.'
+            },
+            hu: {
+                'nav-home': 'Főoldal',
+                'nav-about': 'Rólunk',
+                'nav-investors': 'Befektetőknek',
+                'about-mission-title': 'Missziónk',
+                'about-mission-text': 'A Molecula létezése arra irányul, hogy valóban szénsemleges szintetikus üzemanyagokat hozzon létre, amelyek korszerű járműveket képesek meghajtani kompromisszumok nélkül. Célunk egyszerű: fosszilis benzin és dízel felváltása tiszta, fenntartható alternatívákkal – anélkül, hogy a sofőröket vagy az ipart motorcserére kényszerítenénk.',
+                'about-story-title': 'Történetünk',
+                'about-story-text': 'A közlekedési szektor a globális CO₂-kibocsátás közel negyedéért felelős. Bár az elektromos járművek terjednek, milliárdnyi meglévő autó, teherautó és hajó még fosszilis üzemanyagokon fut – és ez így lesz évtizedeken át. A Moleculát azzal a hittel indítottuk, hogy egy másféle üzemanyag áthidalhatja ezt a szakadékot: egy olyan üzemanyag, amelyet levegőből, vízből és megújuló energiából készítünk, de azonos teljesítményt nyújt, mint a mai benzin. Ez a vízió úttörő kémiát ötvöz a gyakorlati alkalmazhatósággal: tiszta üzemanyagok, amelyek közvetlenül beilleszthetők a meglévő infrastruktúrába.',
+                'about-tech-title': 'Technológiánk',
+                'about-tech-intro': 'A Molecula hibrid megközelítést alkalmaz a tiszta üzemanyagok előállítására:',
+                'about-tech-ft': 'Fischer–Tropsch szintézis a megújuló hidrogén és CO₂ átalakítására szintetikus szénhidrogénekké.',
+                'about-tech-hydro': 'Hidrokrakkolás a FT-ből származó nehezebb viaszok magas oktánszámú benzinné alakítására.',
+                'about-tech-dac': 'Közvetlen levegő eltávolítás a CO₂ légkörből történő beszerzésére, biztosítva a nettó zéró kibocsátást.',
+                'about-tech-dual': 'Ez a kettős útvonalú rendszer lehetővé teszi számunkra, hogy nagy mennyiségű tiszta benzint és dízelt állítsunk elő, miközben teljes szénsemlegességet tartunk fenn.',
+                'about-vision-title': 'Jövőbeli Víziónk',
+                'about-vision-text': 'Elkötelezettek vagyunk technológiánk következő években történő méretezése iránt:',
+                'about-vision-2025': '2025 – Laboratóriumi prototípus a folyamat bizonyítására.',
+                'about-vision-2026': '2026 – Kísérleti méretű termelés és tanúsítás.',
+                'about-vision-2027': '2027 – Piacra lépés az első kereskedelmi üzemmel.',
+                'about-vision-2030': '2030 – Többüzemű termelési hálózat Európa-szerte.',
+                'about-team-title': 'Csapatunk',
+                'about-team-founder-name': 'Alapító & Ügyvezető Igazgató: [A Te Neved]',
+                'about-team-founder-desc': '[A Te Neved] a klímainnováció iránti szenvedélye és a gyakorlati megoldások iránti elkötelezettsége hajtja, miközben a Molecula tervezését és üzleti fejlesztését vezeti.',
+                'about-team-expanding': 'Jelenleg építjük mérnöki és kémiai csapatunkat, hogy életre keltsük víziónkat.',
+                'footer-text': '© 2025 Molecula. Minden jog fenntartva.'
+            }
+        };
+
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('language-switch').addEventListener('change', (e) => {
+                updateLanguage(e.target.value);
+            });
+
+            // Initialize with English
+            updateLanguage('en');
+        });
+    </script>
+</body>
+</html>
