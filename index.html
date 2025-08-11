@@ -80,7 +80,7 @@
             <p data-i18n="hero-text" class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
                 Molecula is revolutionizing energy with synthetic, carbon-neutral gasoline made from CO₂ captured from the air and renewable hydrogen.
             </p>
-            <a href="#contact" data-i18n="hero-cta" class="mt-6 inline-block bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-green-100 transition" onclick="scrollToSection(event)">Join Our Mission</a>
+            <a href="#contact" data-i18n="hero-cta" class="mt-6 inline-block bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-green-100 transition" id="join-mission">Join Our Mission</a>
         </div>
     </section>
 
@@ -178,7 +178,7 @@
         <div class="max-w-7xl mx-auto">
             <h2 data-i18n="contact-title" class="text-3xl md:text-4xl font-bold text-center mb-8">Join Our Journey</h2>
             <p data-i18n="contact-text" class="text-center text-gray-600 text-sm sm:text-base mb-8">Interested in investing in the future of clean energy? Get in touch with us.</p>
-            <form name="investor-contact" method="POST" action="/thank-you.html?lang={{lang}}" data-netlify="true" onsubmit="setLanguageParam(event)" class="max-w-lg mx-auto space-y-4">
+            <form name="investor-contact" method="POST" action="/thank-you.html" data-netlify="true" onsubmit="setLanguageParam(event)" class="max-w-lg mx-auto space-y-4">
                 <input type="hidden" name="form-name" value="investor-contact" />
                 <input type="hidden" name="lang" id="form-lang" value="en">
                 <input type="text" name="name" data-i18n-placeholder="contact-name-placeholder" placeholder="Full Name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-sm sm:text-base">
@@ -192,11 +192,10 @@
     <!-- Footer -->
     <footer class="bg-blue-900 text-white py-6">
         <div class="max-w-7xl mx-auto text-center">
-            <p data-i18n="footer-text" class="text-sm sm:text-base">&copy; 2025 Molecula. All rights reserved.</p>
+            <p data-i18n="footer-text" class="text-sm sm:text-base" id="footer-text">&copy; <span id="current-year">2025</span> Molecula. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for Language Switching, Scrolling, and Form Handling -->
     <script>
         const translations = {
             en: {
@@ -233,14 +232,14 @@
                 'contact-email-placeholder': 'Email Address',
                 'contact-message-placeholder': 'Your Message',
                 'contact-submit': 'Submit',
-                'footer-text': '© 2025 Molecula. All rights reserved.'
+                'footer-text': '&copy; {{year}} Molecula. All rights reserved.'
             },
             hu: {
                 'nav-home': 'Főoldal',
                 'nav-about': 'Rólunk',
                 'nav-investors': 'Befektetőknek',
                 'hero-title': 'A Jövő Üzemanyaga Tiszta Molekulákkal',
-                'hero-text': 'A Molecula forradalmasítja az energiatermelést szintetikus, szénsemleges benzinnel, amelyet a levegőből kivont CO₂-ből és megújuló hidrogénből állítunk elő.',
+                'hero-text': 'A Molecula forradalmasítja az energiatermelést szintetikus, szénsemleges benzinnel, amelyet a levegőből kivont CO₂-ból és megújuló hidrogénből állítunk elő.',
                 'hero-cta': 'Csatlakozz Küldetésünkhöz',
                 'tech-title': 'Technológiánk',
                 'tech-dac-title': 'Közvetlen Levegő CO₂ Eltávolítás (DAC)',
@@ -269,7 +268,7 @@
                 'contact-email-placeholder': 'E-mail Cím',
                 'contact-message-placeholder': 'Üzeneted',
                 'contact-submit': 'Küldés',
-                'footer-text': '© 2025 Molecula. Minden jog fenntartva.'
+                'footer-text': '&copy; {{year}} Molecula. Minden jog fenntartva.'
             }
         };
 
@@ -277,7 +276,11 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
+                    if (element.id === 'footer-text') {
+                        element.innerHTML = translations[lang][key].replace('{{year}}', new Date().getFullYear());
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
                 }
             });
             document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
@@ -287,38 +290,41 @@
                 }
             });
             document.documentElement.lang = lang;
-            document.getElementById('form-lang').value = lang; // Sync lang with form
+            document.getElementById('form-lang').value = lang;
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        function scrollToSection(event) {
+            event.preventDefault();
+            const href = this.getAttribute('href');
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            updateLanguage(savedLanguage);
+
+            document.getElementById('language-switch').value = savedLanguage;
             document.getElementById('language-switch').addEventListener('change', (e) => {
                 updateLanguage(e.target.value);
             });
 
-            // Initialize with English
-            updateLanguage('en');
+            document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            // Smooth scrolling function
-            window.scrollToSection = function(event) {
-                event.preventDefault();
-                const target = document.querySelector(event.target.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    const start = performance.now();
-                    requestAnimationFrame(function step(timestamp) {
-                        const progress = timestamp - start;
-                        if (progress < 150) {
-                            requestAnimationFrame(step);
-                        }
-                    });
-                }
-            };
+            // Attach smooth scroll to the "Join Our Mission" link
+            const joinMissionLink = document.getElementById('join-mission');
+            if (joinMissionLink) {
+                joinMissionLink.addEventListener('click', scrollToSection);
+            }
 
             // Set language parameter before form submission
             window.setLanguageParam = function(event) {
                 const lang = document.getElementById('language-switch').value;
                 const form = event.target;
-                form.action = `/thank-you.html?lang=${lang}`; // Dynamically set the redirect URL
+                form.action = `/thank-you.html?lang=${lang}`;
             };
         });
     </script>
