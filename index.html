@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Molecula - Home</title>
+    <title>Molecula - Clean Tech Startup</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -55,15 +55,20 @@
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
-    <!-- Header with Language Switch -->
+    <!-- Header with Language Switch and Links -->
     <header class="bg-blue-900 text-white py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
             <h1 class="text-xl font-bold">Molecula</h1>
-            <div class="relative">
-                <select id="language-switch" class="bg-green-600 text-white p-2 rounded-lg focus:outline-none hover:bg-green-700 transition text-sm">
-                    <option value="en">English</option>
-                    <option value="hu">Magyar</option>
-                </select>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" data-i18n="nav-home" class="hover:text-green-300 transition">Home</a>
+                <a href="about.html" data-i18n="nav-about" class="hover:text-green-300 transition">About</a>
+                <a href="for-investors.html" data-i18n="nav-investors" class="hover:text-green-300 transition">For Investors</a>
+                <div class="relative">
+                    <select id="language-switch" class="bg-green-600 text-white p-2 rounded-lg focus:outline-none hover:bg-green-700 transition text-sm">
+                        <option value="en">English</option>
+                        <option value="hu">Magyar</option>
+                    </select>
+                </div>
             </div>
         </div>
     </header>
@@ -195,6 +200,9 @@
     <script>
         const translations = {
             en: {
+                'nav-home': 'Home',
+                'nav-about': 'About',
+                'nav-investors': 'For Investors',
                 'hero-title': 'Fueling the Future with Clean Molecules',
                 'hero-text': 'Molecula is revolutionizing energy with synthetic, carbon-neutral gasoline made from CO₂ captured from the air and renewable hydrogen.',
                 'hero-cta': 'Join Our Mission',
@@ -228,6 +236,9 @@
                 'footer-text': '© 2025 Molecula. All rights reserved.'
             },
             hu: {
+                'nav-home': 'Főoldal',
+                'nav-about': 'Rólunk',
+                'nav-investors': 'Befektetőknek',
                 'hero-title': 'A Jövő Üzemanyaga Tiszta Molekulákkal',
                 'hero-text': 'A Molecula forradalmasítja az energiatermelést szintetikus, szénsemleges benzinnel, amelyet a levegőből kivont CO₂-ből és megújuló hidrogénből állítunk elő.',
                 'hero-cta': 'Csatlakozz Küldetésünkhöz',
