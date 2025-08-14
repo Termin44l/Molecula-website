@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Molecula - Home</title>
+    <title>Molecula - Clean Tech Startup</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
         .section-padding {
             padding: 4rem 1rem;
@@ -23,6 +24,17 @@
             height: 100%;
             width: 4px;
             background: #10b981;
+        }
+        /* Navbar adjustments for mobile */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            space-x-4;
+        }
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         @media (max-width: 640px) {
             .section-padding {
@@ -51,23 +63,51 @@
                 background: #10b981;
                 border-radius: 50%;
             }
+            /* Mobile navbar */
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #1e3a8a;
+                padding: 1rem;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            header .flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            header a, header select {
+                margin: 0.5rem 0;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
     <!-- Header with Language Switch and Links -->
     <header class="bg-blue-900 text-white py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
-            <h1 class="text-xl font-bold">Molecula</h1>
-            <div class="flex items-center space-x-4">
-                <a href="index.html" data-i18n="nav-home" class="hover:text-green-300 transition">Home</a>
-                <a href="about.html" data-i18n="nav-about" class="hover:text-green-300 transition">About</a>
-                <a href="for-investors.html" data-i18n="nav-investors" class="hover:text-green-300 transition">For Investors</a>
-                <div class="relative">
-                    <select id="language-switch" class="bg-green-600 text-white p-2 rounded-lg focus:outline-none hover:bg-green-700 transition text-sm">
-                        <option value="en">English</option>
-                        <option value="hu">Magyar</option>
-                    </select>
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold">Molecula</h1>
+                <div class="flex items-center space-x-4 relative">
+                    <div class="nav-toggle">☰</div>
+                    <div class="nav-menu">
+                        <a href="index.html" data-i18n="nav-home" class="hover:text-green-300 transition">Home</a>
+                        <a href="about.html" data-i18n="nav-about" class="hover:text-green-300 transition">About</a>
+                        <a href="for-investors.html" data-i18n="nav-investors" class="hover:text-green-300 transition">For Investors</a>
+                        <select id="language-switch" class="bg-green-600 text-white p-2 rounded-lg focus:outline-none hover:bg-green-700 transition text-sm">
+                            <option value="en">English</option>
+                            <option value="hu">Magyar</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,7 +232,7 @@
     <!-- Footer -->
     <footer class="bg-blue-900 text-white py-6">
         <div class="max-w-7xl mx-auto text-center">
-            <p data-i18n="footer-text" class="text-sm sm:text-base" id="footer-text">&copy; <span id="current-year">2025</span> Molecula. All rights reserved.</p>
+            <p data-i18n="footer-text" class="text-sm sm:text-base">&copy; 2025 Molecula. All rights reserved.</p>
         </div>
     </footer>
 
@@ -232,7 +272,7 @@
                 'contact-email-placeholder': 'Email Address',
                 'contact-message-placeholder': 'Your Message',
                 'contact-submit': 'Submit',
-                'footer-text': '&copy; {{year}} Molecula. All rights reserved.'
+                'footer-text': '&copy; 2025 Molecula. All rights reserved.'
             },
             hu: {
                 'nav-home': 'Főoldal',
@@ -268,7 +308,7 @@
                 'contact-email-placeholder': 'E-mail Cím',
                 'contact-message-placeholder': 'Üzeneted',
                 'contact-submit': 'Küldés',
-                'footer-text': '&copy; {{year}} Molecula. Minden jog fenntartva.'
+                'footer-text': '&copy; 2025 Molecula. Minden jog fenntartva.'
             }
         };
 
@@ -276,11 +316,7 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    if (element.id === 'footer-text') {
-                        element.innerHTML = translations[lang][key].replace('{{year}}', new Date().getFullYear());
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
+                    element.textContent = translations[lang][key];
                 }
             });
             document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
@@ -303,6 +339,11 @@
             }
         }
 
+        function toggleMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             updateLanguage(savedLanguage);
@@ -312,15 +353,16 @@
                 updateLanguage(e.target.value);
             });
 
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-
-            // Attach smooth scroll to the "Join Our Mission" link
             const joinMissionLink = document.getElementById('join-mission');
             if (joinMissionLink) {
                 joinMissionLink.addEventListener('click', scrollToSection);
             }
 
-            // Set language parameter before form submission
+            const navToggle = document.querySelector('.nav-toggle');
+            if (navToggle) {
+                navToggle.addEventListener('click', toggleMenu);
+            }
+
             window.setLanguageParam = function(event) {
                 const lang = document.getElementById('language-switch').value;
                 const form = event.target;
