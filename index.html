@@ -9,7 +9,6 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
         .section-padding {
             padding: 4rem 1rem;
@@ -25,16 +24,46 @@
             width: 4px;
             background: #10b981;
         }
-        /* Navbar adjustments for mobile */
-        .nav-menu {
+        /* Responsive Header Fix */
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+        .nav-actions {
             display: flex;
             align-items: center;
-            space-x-4;
+            gap: 0.5rem;
+            z-index: 20; /* Ensure hamburger is above nav-links */
         }
-        .nav-toggle {
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        .hamburger {
             display: none;
-            font-size: 1.5rem;
+            flex-direction: column;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
             cursor: pointer;
+            padding: 0;
+            z-index: 30; /* Ensure hamburger is above nav-links */
+        }
+        .hamburger span {
+            height: 4px;
+            width: 28px;
+            background: #10b981;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+            display: block;
         }
         @media (max-width: 640px) {
             .section-padding {
@@ -63,29 +92,34 @@
                 background: #10b981;
                 border-radius: 50%;
             }
-            /* Mobile navbar */
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
+            /* Header Responsive Fix */
+            .header-flex {
+                flex-direction: row;
+                align-items: center;
+            }
+            .nav-actions {
+                gap: 0.25rem;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
                 position: absolute;
                 top: 100%;
                 left: 0;
+                right: 0;
                 background: #1e3a8a;
-                padding: 1rem;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.25rem;
+                padding: 0.5rem 1rem;
+                display: none;
+                z-index: 10;
             }
-            .nav-menu.active {
+            .nav-links.open {
                 display: flex;
             }
-            .nav-toggle {
-                display: block;
-            }
-            header .flex {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            header a, header select {
-                margin: 0.5rem 0;
+            .nav-links a, .nav-links select {
                 width: 100%;
             }
         }
@@ -94,22 +128,24 @@
 <body class="bg-gray-100 text-gray-900">
     <!-- Header with Language Switch and Links -->
     <header class="bg-blue-900 text-white py-4">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-xl font-bold">Molecula</h1>
-                <div class="flex items-center space-x-4 relative">
-                    <div class="nav-toggle">☰</div>
-                    <div class="nav-menu">
-                        <a href="index.html" data-i18n="nav-home" class="hover:text-green-300 transition">Home</a>
-                        <a href="about.html" data-i18n="nav-about" class="hover:text-green-300 transition">About</a>
-                        <a href="for-investors.html" data-i18n="nav-investors" class="hover:text-green-300 transition">For Investors</a>
-                        <select id="language-switch" class="bg-green-600 text-white p-2 rounded-lg focus:outline-none hover:bg-green-700 transition text-sm">
-                            <option value="en">English</option>
-                            <option value="hu">Magyar</option>
-                        </select>
-                    </div>
-                </div>
+        <div class="max-w-7xl mx-auto header-flex px-4">
+            <h1 class="text-xl font-bold">Molecula Energy</h1>
+            <div class="nav-actions">
+                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <select id="language-switch" class="bg-green-600 text-white p-2 rounded-lg focus:outline-none hover:bg-green-700 transition text-sm">
+                    <option value="en">English</option>
+                    <option value="hu">Magyar</option>
+                </select>
             </div>
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" data-i18n="nav-home" class="hover:text-green-300 transition">Home</a>
+                <a href="about.html" data-i18n="nav-about" class="hover:text-green-300 transition">About</a>
+                <a href="for-investors.html" data-i18n="nav-investors" class="hover:text-green-300 transition">For Investors</a>
+            </nav>
         </div>
     </header>
 
@@ -118,7 +154,7 @@
         <div class="max-w-7xl mx-auto text-center">
             <h1 data-i18n="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">Fueling the Future with Clean Molecules</h1>
             <p data-i18n="hero-text" class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
-                Molecula is revolutionizing energy with synthetic, carbon-neutral gasoline made from CO₂ captured from the air and renewable hydrogen.
+                Molecula Energy is revolutionizing energy with synthetic, carbon-neutral gasoline made from CO₂ captured from the air and renewable hydrogen.
             </p>
             <a href="#contact" data-i18n="hero-cta" class="mt-6 inline-block bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-green-100 transition" id="join-mission">Join Our Mission</a>
         </div>
@@ -232,7 +268,7 @@
     <!-- Footer -->
     <footer class="bg-blue-900 text-white py-6">
         <div class="max-w-7xl mx-auto text-center">
-            <p data-i18n="footer-text" class="text-sm sm:text-base">&copy; 2025 Molecula. All rights reserved.</p>
+            <p data-i18n="footer-text" class="text-sm sm:text-base" id="footer-text">&copy; <span id="current-year">2025</span> Molecula Energy. All rights reserved.</p>
         </div>
     </footer>
 
@@ -243,7 +279,7 @@
                 'nav-about': 'About',
                 'nav-investors': 'For Investors',
                 'hero-title': 'Fueling the Future with Clean Molecules',
-                'hero-text': 'Molecula is revolutionizing energy with synthetic, carbon-neutral gasoline made from CO₂ captured from the air and renewable hydrogen.',
+                'hero-text': 'Molecula Energy is revolutionizing energy with synthetic, carbon-neutral gasoline made from CO₂ captured from the air and renewable hydrogen.',
                 'hero-cta': 'Join Our Mission',
                 'tech-title': 'Our Technology',
                 'tech-dac-title': 'Direct Air Capture (DAC)',
@@ -272,14 +308,14 @@
                 'contact-email-placeholder': 'Email Address',
                 'contact-message-placeholder': 'Your Message',
                 'contact-submit': 'Submit',
-                'footer-text': '&copy; 2025 Molecula. All rights reserved.'
+                'footer-text': '&copy; {{year}} Molecula Energy. All rights reserved.'
             },
             hu: {
                 'nav-home': 'Főoldal',
                 'nav-about': 'Rólunk',
                 'nav-investors': 'Befektetőknek',
                 'hero-title': 'A Jövő Üzemanyaga Tiszta Molekulákkal',
-                'hero-text': 'A Molecula forradalmasítja az energiatermelést szintetikus, szénsemleges benzinnel, amelyet a levegőből kivont CO₂-ból és megújuló hidrogénből állítunk elő.',
+                'hero-text': 'A Molecula Energy forradalmasítja az energiatermelést szintetikus, szénsemleges benzinnel, amelyet a levegőből kivont CO₂-ból és megújuló hidrogénből állítunk elő.',
                 'hero-cta': 'Csatlakozz Küldetésünkhöz',
                 'tech-title': 'Technológiánk',
                 'tech-dac-title': 'Közvetlen Levegő CO₂ Eltávolítás (DAC)',
@@ -308,7 +344,7 @@
                 'contact-email-placeholder': 'E-mail Cím',
                 'contact-message-placeholder': 'Üzeneted',
                 'contact-submit': 'Küldés',
-                'footer-text': '&copy; 2025 Molecula. Minden jog fenntartva.'
+                'footer-text': '&copy; {{year}} Molecula Energy. Minden jog fenntartva.'
             }
         };
 
@@ -316,7 +352,11 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
+                    if (element.id === 'footer-text') {
+                        element.innerHTML = translations[lang][key].replace('{{year}}', new Date().getFullYear());
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
                 }
             });
             document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
@@ -339,12 +379,26 @@
             }
         }
 
-        function toggleMenu() {
-            const navMenu = document.querySelector('.nav-menu');
-            navMenu.classList.toggle('active');
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger menu toggle
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const navLinks = document.getElementById('nav-links');
+            if (hamburgerBtn && navLinks) {
+                hamburgerBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('open');
+                });
+                document.addEventListener('click', function(e) {
+                    if (
+                        navLinks.classList.contains('open') &&
+                        !navLinks.contains(e.target) &&
+                        !hamburgerBtn.contains(e.target)
+                    ) {
+                        navLinks.classList.remove('open');
+                    }
+                });
+            }
+
             const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
             updateLanguage(savedLanguage);
 
@@ -353,16 +407,15 @@
                 updateLanguage(e.target.value);
             });
 
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Attach smooth scroll to the "Join Our Mission" link
             const joinMissionLink = document.getElementById('join-mission');
             if (joinMissionLink) {
                 joinMissionLink.addEventListener('click', scrollToSection);
             }
 
-            const navToggle = document.querySelector('.nav-toggle');
-            if (navToggle) {
-                navToggle.addEventListener('click', toggleMenu);
-            }
-
+            // Set language parameter before form submission
             window.setLanguageParam = function(event) {
                 const lang = document.getElementById('language-switch').value;
                 const form = event.target;
